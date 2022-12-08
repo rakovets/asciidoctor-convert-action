@@ -1,0 +1,17 @@
+name: 'AsciiDoctor Convert Action'
+author: 'Dmitry Rakovets'
+description: 'AsciiDoctor converter'
+
+inputs:
+  command:
+    description: 'Command for AsciiDoctor'
+    required: true
+    default: 'asciidoctor  --destination-dir . --backend html5 --source-dir **/*.adoc'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
+outputs:
+  time:
+    description: 'AsciiDoc-files Converted'
